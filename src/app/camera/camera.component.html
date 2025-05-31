@@ -1,0 +1,18 @@
+<div class="flex flex-col items-center gap-4 px-4 py-6 min-h-screen bg-gray-50">
+      <div class="w-full max-w-md aspect-video rounded-lg overflow-hidden shadow-md bg-black">
+            <webcam [trigger]="triggerObservable" (imageCapture)="handleImage($event)"
+                  class="w-full h-full object-cover"></webcam>
+      </div>
+
+      <button
+            class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-full shadow transition-colors duration-200"
+            (click)="triggerSnapshot()">
+            📸 Chụp ảnh
+      </button>
+
+      <div *ngIf="webcamImage" class="w-full max-w-md text-center">
+            <h3 class="mt-6 text-xl font-semibold">Ảnh đã chụp:</h3>
+            <img [src]="webcamImage.imageAsDataUrl" alt="Ảnh chụp"
+                  class="w-full rounded-lg shadow mt-2 object-contain" />
+      </div>
+</div>
